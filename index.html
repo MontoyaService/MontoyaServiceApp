@@ -491,35 +491,66 @@ button:active{
 
     @page{
         size:A4;
-        margin:12mm;
+        margin:10mm;
     }
 
-    body{
-        background:#fff;
+    html,body{
+        background:#fff !important;
+        color:#111 !important;
+        margin:0 !important;
+        padding:0 !important;
     }
 
+    /* Ocultar solamente la pantalla de captura */
     header,
-    .container,
+    .container > .card,
     .note-actions{
         display:none !important;
     }
 
+    /* Mantener visible el contenedor porque ahí vive la nota */
+    .container{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+    }
+
     #resultado{
         display:block !important;
+        width:100% !important;
+        margin:0 !important;
+        padding:0 !important;
     }
 
     .note-wrapper{
-        margin:0;
+        display:block !important;
+        width:100% !important;
+        margin:0 !important;
+        padding:0 !important;
     }
 
     .note{
         display:block !important;
-        max-width:none;
-        width:100%;
-        margin:0;
-        padding:0;
-        box-shadow:none;
-        border-radius:0;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:8mm !important;
+        background:#fff !important;
+        color:#111 !important;
+        box-shadow:none !important;
+        border-radius:0 !important;
+        page-break-inside:avoid;
+    }
+
+    .note-table{
+        page-break-inside:auto;
+    }
+
+    .note-table tr{
+        page-break-inside:avoid;
+        page-break-after:auto;
     }
 
     .note-table th{
