@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montoya Service</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#111;
+  color:#fff;
+}
+header{
+  background:#000;
+  padding:22px 18px;
+  text-align:center;
+  border-bottom:3px solid #ff6a00;
+}
+.logo{
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.logo span{color:#ff6a00}
+.slogan{color:#ccc;margin-top:5px}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:#1c1c1c;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+h2{
+  margin-top:0;
+  color:#ff6a00;
+}
+
+label{
+  display:block;
+  margin-top:13px;
+  margin-bottom:6px;
+  color:#ddd;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border-radius:9px;
+  border:1px solid #555;
+  background:#292929;
+  color:#fff;
+  font-size:16px;
+}
+
+textarea{min-height:90px;resize:vertical}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:14px 18px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.primary{
+  width:100%;
+  background:#ff6a00;
+  color:#fff;
+  margin-top:20px;
+}
+
+.secondary{
+  background:#333;
+  color:#fff;
+}
+
+.item{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.item input:first-child{flex:2}
+.item input{flex:1}
+
+.total{
+  text-align:right;
+  font-size:25px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+.orange{color:#ff6a00}
+
+.note{
+  background:#fff;
+  color:#111;
+  padding:25px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+.note h1{
+  margin:0;
+  font-size:28px;
+}
+
+.note-header{
+  border-bottom:3px solid #ff6a00;
+  padding-bottom:12px;
+  margin-bottom:15px;
+}
+
+.note-row{
+  margin:8px 0;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  padding:9px 5px;
+  border-bottom:1px solid #ddd;
+  text-align:left;
+}
+
+.note-total{
+  text-align:right;
+  font-size:24px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.guarantee{
+  background:#f5f5f5;
+  padding:12px;
+  border-radius:8px;
+  margin-top:20px;
+  font-size:13px;
+}
+
+@media(max-width:500px){
+  .item{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MONTOYA <span>SERVICE</span></div>
+  <div class="slogan">Tu equipo en buenas manos.</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🧾 Nueva nota de servicio</h2>
+
+<label>Cliente</label>
+<input id="cliente" placeholder="Nombre del cliente">
+
+<label>Teléfono</label>
+<input id="telefono" type="tel" placeholder="Teléfono">
+
+<label>Tipo de equipo</label>
+<select id="equipo">
+<option>Motosierra</option>
+<option>Desbrozadora</option>
+<option>Generador</option>
+<option>Motobomba</option>
+<option>Otro</option>
+</select>
+
+<label>Marca</label>
+<input id="marca" placeholder="Ej. Husqvarna">
+
+<label>Modelo</label>
+<input id="modelo" placeholder="Ej. 365">
+
+<label>Número de serie</label>
+<input id="serie" placeholder="Número de serie">
+
+<label>Trabajo realizado</label>
+<textarea id="trabajo" placeholder="Describe el trabajo realizado..."></textarea>
+
+<h2>📦 Servicios / refacciones</h2>
+
+<div id="items">
+
+<div class="item">
+<input placeholder="Concepto">
+<input type="number" placeholder="Precio" class="precio">
+</div>
+
+</div>
+
+<button class="secondary" onclick="agregarItem()">
+➕ Agregar concepto
+</button>
+
+<div class="total">
+Total: $<span id="total">0.00</span> MXN
+</div>
+
+<button class="primary" onclick="generarNota()">
+GENERAR NOTA
+</button>
+
+</div>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+let folio = Number(localStorage.getItem("folioMontoya") || 0);
+
+function agregarItem(){
+  const div=document.createElement("div");
+  div.className="item";
+  div.innerHTML=`
+    <input placeholder="Concepto">
+    <input type="number" placeholder="Precio" class="precio">
+  `;
+  document.getElementById("items").appendChild(div);
+  calcularTotal();
+}
+
+document.addEventListener("input",function(e){
+  if(e.target.classList.contains("precio")){
+    calcularTotal();
+  }
+});
+
+function calcularTotal(){
+
+  let total=0;
+
+  document.querySelectorAll(".precio").forEach(input=>{
+    total += Number(input.value)||0;
+  });
+
+  document.getElementById("total").textContent=total.toFixed(2);
+}
+
+function generarNota(){
+
+  const cliente=document.getElementById("cliente").value;
+  const telefono=document.getElementById("telefono").value;
+  const equipo=document.getElementById("equipo").value;
+  const marca=document.getElementById("marca").value;
+  const modelo=document.getElementById("modelo").value;
+  const serie=document.getElementById("serie").value;
+  const trabajo=document.getElementById("trabajo").value;
+
+  if(!cliente){
+    alert("Escribe el nombre del cliente.");
+    return;
+  }
+
+  folio++;
+  localStorage.setItem("folioMontoya",folio);
+
+  const numero="MS-"+String(folio).padStart(6,"0");
+
+  let filas="";
+  let total=0;
+
+  document.querySelectorAll("#items .item").forEach(item=>{
+
+    const inputs=item.querySelectorAll("input");
+
+    const concepto=inputs[0].value;
+    const precio=Number(inputs[1].value)||0;
+
+    if(concepto){
+      filas+=`
+      <tr>
+        <td>${concepto}</td>
+        <td>$${precio.toFixed(2)}</td>
+      </tr>`;
+      total+=precio;
+    }
+
+  });
+
+  const fecha=new Date().toLocaleDateString("es-MX");
+
+  document.getElementById("resultado").innerHTML=`
+
+  <div class="note" id="nota">
+
+    <div class="note-header">
+      <h1>MONTOYA SERVICE</h1>
+      <b>Tu equipo en buenas manos.</b>
+      <p>📞 317 101 4207</p>
+      <p>📍 San Juan Xoconusco</p>
+    </div>
+
+    <h2 style="color:#111">NOTA DE SERVICIO</h2>
+
+    <div class="note-row">
+      <b>Folio:</b> ${numero}
+    </div>
+
+    <div class="note-row">
+      <b>Fecha:</b> ${fecha}
+    </div>
+
+    <hr>
+
+    <div class="note-row">
+      <b>Cliente:</b> ${cliente}
+    </div>
+
+    <div class="note-row">
+      <b>Teléfono:</b> ${telefono}
+    </div>
+
+    <hr>
+
+    <div class="note-row">
+      <b>Equipo:</b> ${equipo}
+    </div>
+
+    <div class="note-row">
+      <b>Marca:</b> ${marca}
+    </div>
+
+    <div class="note-row">
+      <b>Modelo:</b> ${modelo}
+    </div>
+
+    <div class="note-row">
+      <b>Número de serie:</b> ${serie}
+    </div>
+
+    <hr>
+
+    <b>TRABAJO REALIZADO</b>
+    <p>${trabajo || "No especificado"}</p>
+
+    <table>
+      <tr>
+        <th>Concepto</th>
+        <th>Importe</th>
+      </tr>
+
+      ${filas}
+
+    </table>
+
+    <div class="note-total">
+      TOTAL: $${total.toFixed(2)} MXN
+    </div>
+
+    <div class="guarantee">
+      <b>GARANTÍA</b><br>
+      20 días posteriores a la reparación,
+      únicamente sobre las refacciones instaladas,
+      bajo las condiciones de garantía de Montoya Service.
+    </div>
+
+    <p style="text-align:center;margin-top:25px">
+      <b>Gracias por confiar en Montoya Service.</b>
+    </p>
+
+  </div>
+
+  `;
+
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior:"smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
