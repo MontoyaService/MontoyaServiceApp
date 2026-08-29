@@ -91,34 +91,48 @@ button{border:0;border-radius:10px;padding:13px 17px;font-weight:800;cursor:poin
 .note-footer div:nth-child(2){text-align:center}.note-footer div:nth-child(3){text-align:right}
 
 /* PRINT: UNA SOLA HOJA A4 */
-@page{size:A4;margin:7mm}
+@page{size:A4;margin:5mm}
 @media print{
- html,body{background:#fff!important;color:#111!important}
+ html,body{background:#fff!important;color:#111!important;margin:0!important;padding:0!important}
  header,.container>.card,.note-actions{display:none!important}
  .container{max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
  #resultado,.note-wrapper{display:block!important;width:100%!important;margin:0!important;padding:0!important}
- .note{max-width:none!important;width:100%!important;padding:7mm!important;margin:0!important;border-radius:0!important;box-shadow:none!important}
- .note-header{padding:10px 12px 9px}
- .brand-logo{width:54px;height:54px;font-size:20px}
- .brand-name{font-size:25px}
- .folio-box{min-width:125px;padding:7px}
- .contact-bar{padding:6px 2px}
- .note-title-row{margin:9px 0 6px}
- .note-title{font-size:21px}
- .section-label{margin:6px 0 4px}
- .info-cell{padding:5px 7px;min-height:38px}
- .info-value{font-size:10px}
- .work-box{min-height:32px;padding:5px 7px}
- .note-table{font-size:8.5px;margin-top:5px}
- .note-table th{padding:5px}.note-table td{padding:3px 5px;height:19px}
- .note-bottom{gap:6px;margin-top:6px}
- .total-box,.guarantee-box,.payment-box{min-height:75px;padding:7px}
- .grand-total{margin:5px -7px -7px;padding:6px 7px;font-size:13px}
- .grand-total span:last-child{margin:-6px -7px -6px 0;padding:6px 7px}
- .features{margin-top:6px;padding:6px 0}
- .feature{font-size:7px}.feature b{font-size:8px}.feature-icon{font-size:14px}
- .note-thanks{margin-top:6px;font-size:9px}.note-thanks strong{font-size:11px}
- .note-footer{margin:6px -7mm -7mm;padding:7px 10px;font-size:8px}
+ .note{max-width:none!important;width:100%!important;padding:5mm!important;margin:0!important;border-radius:0!important;box-shadow:none!important;page-break-inside:avoid!important;break-inside:avoid!important}
+ .note-header{padding:7px 10px 6px;border-top-width:3px;border-bottom-width:3px}
+ .brand-row{gap:9px}
+ .brand-logo{width:45px;height:45px;font-size:17px;border-width:3px}
+ .brand-name{font-size:21px}
+ .brand-slogan{font-size:8px;margin-top:3px;letter-spacing:.7px}
+ .folio-box{min-width:112px;padding:5px 7px;font-size:8px}
+ .folio-box b{font-size:9px}.folio-box strong{font-size:10px}
+ .contact-bar{padding:4px 2px;font-size:8px;gap:5px}
+ .note-title-row{margin:6px 0 4px}
+ .note-title{font-size:18px}
+ .note-date{font-size:8px}
+ .section-label{font-size:9px;border-left-width:4px;padding-left:5px;margin:4px 0 3px}
+ .info-grid{grid-template-columns:repeat(3,1fr)!important}
+ .info-cell{padding:3px 5px;min-height:28px}
+ .info-cell:nth-child(3n){border-right:0}
+ .info-cell:nth-last-child(-n+3){border-bottom:0}
+ .info-label{font-size:6.5px;margin-bottom:1px}
+ .info-value{font-size:8.5px;line-height:1.1}
+ .work-box{min-height:25px;padding:3px 5px;font-size:8px}
+ .note-table{font-size:7.5px;margin-top:3px}
+ .note-table th{padding:3px 4px}.note-table td{padding:2px 4px;height:16px;line-height:1.05}
+ .note-table .num{width:20px}.note-table .qty{width:35px}.note-table .money{width:65px}
+ .note-bottom{grid-template-columns:1.05fr 1fr 1fr!important;gap:5px;margin-top:5px}
+ .total-box,.guarantee-box,.payment-box{min-height:60px;padding:5px}
+ .total-row{font-size:7.5px;padding:2px 0}
+ .grand-total{margin:4px -5px -5px;padding:5px;font-size:11px}
+ .grand-total span:last-child{margin:-5px -5px -5px 0;padding:5px}
+ .box-title{font-size:8.5px;margin-bottom:3px}
+ .guarantee-box{font-size:7px;line-height:1.2}
+ .payment-box{font-size:7px;line-height:1.35}
+ .check::before{font-size:9px;margin-right:3px}
+ .features{margin-top:5px;padding:4px 0}
+ .feature{font-size:6.5px;padding:0 4px;line-height:1.1}.feature b{font-size:7px;margin-bottom:1px}.feature-icon{font-size:11px;margin-bottom:1px}
+ .note-thanks{margin-top:4px;font-size:7.5px;line-height:1.15}.note-thanks strong{font-size:9px}
+ .note-footer{margin:4px -5mm -5mm;padding:5px 7px;font-size:6.5px;border-top-width:2px}
 }
 
 /* MÓVIL */
