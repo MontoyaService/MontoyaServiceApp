@@ -7,156 +7,533 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#111;
-  color:#fff;
+    margin:0;
+    background:#111;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
 }
+
+button,input,select,textarea{
+    font-family:inherit;
+}
+
 header{
-  background:#000;
-  padding:22px 18px;
-  text-align:center;
-  border-bottom:3px solid #ff6a00;
+    background:#050505;
+    border-bottom:4px solid #ff6a00;
+    padding:25px 18px;
+    text-align:center;
 }
+
 .logo{
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:2px;
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:2px;
 }
-.logo span{color:#ff6a00}
-.slogan{color:#ccc;margin-top:5px}
+
+.logo span{
+    color:#ff6a00;
+}
+
+.slogan{
+    margin-top:6px;
+    color:#ccc;
+    font-size:16px;
+}
 
 .container{
-  max-width:700px;
-  margin:auto;
-  padding:20px;
+    width:100%;
+    max-width:760px;
+    margin:auto;
+    padding:20px;
 }
 
 .card{
-  background:#1c1c1c;
-  border:1px solid #333;
-  border-radius:15px;
-  padding:18px;
-  margin-bottom:18px;
+    background:#1b1b1b;
+    border:1px solid #343434;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
-h2{
-  margin-top:0;
-  color:#ff6a00;
+.section-title{
+    margin:0 0 20px;
+    font-size:23px;
+    color:#ff6a00;
 }
 
 label{
-  display:block;
-  margin-top:13px;
-  margin-bottom:6px;
-  color:#ddd;
-  font-weight:bold;
+    display:block;
+    margin:15px 0 7px;
+    font-weight:bold;
+    color:#e8e8e8;
 }
 
 input,select,textarea{
-  width:100%;
-  padding:13px;
-  border-radius:9px;
-  border:1px solid #555;
-  background:#292929;
-  color:#fff;
-  font-size:16px;
+    width:100%;
+    padding:14px;
+    border:1px solid #555;
+    border-radius:10px;
+    background:#292929;
+    color:#fff;
+    font-size:16px;
+    outline:none;
 }
 
-textarea{min-height:90px;resize:vertical}
-
-button{
-  border:0;
-  border-radius:10px;
-  padding:14px 18px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+input:focus,select:focus,textarea:focus{
+    border-color:#ff6a00;
 }
 
-.primary{
-  width:100%;
-  background:#ff6a00;
-  color:#fff;
-  margin-top:20px;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-.secondary{
-  background:#333;
-  color:#fff;
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
 .item{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
+    background:#242424;
+    border:1px solid #3b3b3b;
+    border-radius:12px;
+    padding:12px;
+    margin-top:12px;
 }
 
-.item input:first-child{flex:2}
-.item input{flex:1}
-
-.total{
-  text-align:right;
-  font-size:25px;
-  font-weight:bold;
-  margin-top:20px;
+.item-grid{
+    display:grid;
+    grid-template-columns:1fr 80px 120px 42px;
+    gap:8px;
+    align-items:center;
 }
 
-.orange{color:#ff6a00}
+.item input{
+    margin:0;
+}
+
+.btn-delete{
+    background:#3a3a3a;
+    color:#ff5b5b;
+    border:1px solid #555;
+    width:42px;
+    height:45px;
+    padding:0;
+}
+
+button{
+    border:0;
+    border-radius:10px;
+    padding:13px 18px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+.primary{
+    width:100%;
+    margin-top:20px;
+    background:#ff6a00;
+    color:#fff;
+}
+
+.secondary{
+    background:#333;
+    color:#fff;
+    margin-top:14px;
+}
+
+.summary{
+    margin-top:20px;
+    border-top:1px solid #444;
+    padding-top:15px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    color:#ddd;
+}
+
+.summary-row.total{
+    font-size:27px;
+    font-weight:900;
+    color:#fff;
+    border-top:2px solid #ff6a00;
+    margin-top:10px;
+    padding-top:15px;
+}
+
+/* NOTA */
+
+.note-wrapper{
+    margin-top:25px;
+}
 
 .note{
-  background:#fff;
-  color:#111;
-  padding:25px;
-  border-radius:12px;
-  margin-top:20px;
+    background:#fff;
+    color:#111;
+    border-radius:16px;
+    padding:38px;
+    max-width:760px;
+    margin:auto;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
 }
 
-.note h1{
-  margin:0;
-  font-size:28px;
+.note-brand{
+    border-bottom:4px solid #ff6a00;
+    padding-bottom:20px;
+    margin-bottom:25px;
 }
 
-.note-header{
-  border-bottom:3px solid #ff6a00;
-  padding-bottom:12px;
-  margin-bottom:15px;
+.note-logo{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-.note-row{
-  margin:8px 0;
+.note-logo span{
+    color:#ff6a00;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
+.note-slogan{
+    font-size:16px;
+    font-weight:bold;
+    margin-top:5px;
 }
 
-th,td{
-  padding:9px 5px;
-  border-bottom:1px solid #ddd;
-  text-align:left;
+.note-contact{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+    font-size:14px;
 }
 
-.note-total{
-  text-align:right;
-  font-size:24px;
-  font-weight:bold;
-  margin-top:15px;
+.note-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:15px;
+    margin-bottom:22px;
+}
+
+.note-title h1{
+    margin:0;
+    font-size:30px;
+}
+
+.folio{
+    text-align:right;
+    font-size:14px;
+}
+
+.folio strong{
+    font-size:18px;
+}
+
+.info-box{
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.info-section-title{
+    background:#f2f2f2;
+    padding:10px 13px;
+    font-weight:900;
+    font-size:14px;
+    text-transform:uppercase;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.info-cell{
+    padding:11px 13px;
+    border-top:1px solid #ddd;
+}
+
+.info-cell:nth-child(odd){
+    border-right:1px solid #ddd;
+}
+
+.info-label{
+    display:block;
+    font-size:11px;
+    color:#777;
+    text-transform:uppercase;
+    font-weight:bold;
+    margin-bottom:3px;
+}
+
+.info-value{
+    font-weight:bold;
+}
+
+.work-section{
+    margin:22px 0;
+}
+
+.work-title{
+    font-size:15px;
+    font-weight:900;
+    border-bottom:2px solid #111;
+    padding-bottom:8px;
+    margin-bottom:10px;
+}
+
+.work-text{
+    font-size:14px;
+    line-height:1.5;
+}
+
+.note-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.note-table th{
+    background:#151515;
+    color:#fff;
+    padding:11px 8px;
+    text-align:left;
+    font-size:13px;
+}
+
+.note-table td{
+    padding:11px 8px;
+    border-bottom:1px solid #ddd;
+    font-size:14px;
+}
+
+.right{
+    text-align:right;
+}
+
+.center{
+    text-align:center;
+}
+
+.note-totals{
+    width:300px;
+    margin:20px 0 0 auto;
+}
+
+.note-total-row{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+    font-size:14px;
+}
+
+.note-grand-total{
+    border-top:3px solid #ff6a00;
+    margin-top:8px;
+    padding-top:10px;
+    font-size:24px;
+    font-weight:900;
+}
+
+.status{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 13px;
+    border-radius:20px;
+    background:#eee;
+    font-size:13px;
+    font-weight:bold;
 }
 
 .guarantee{
-  background:#f5f5f5;
-  padding:12px;
-  border-radius:8px;
-  margin-top:20px;
-  font-size:13px;
+    margin-top:25px;
+    background:#f3f3f3;
+    border-left:4px solid #ff6a00;
+    border-radius:8px;
+    padding:14px;
+    font-size:12px;
+    line-height:1.45;
 }
 
-@media(max-width:500px){
-  .item{flex-direction:column}
+.guarantee-title{
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:4px;
+}
+
+.note-footer{
+    text-align:center;
+    margin-top:30px;
+    padding-top:18px;
+    border-top:1px solid #ddd;
+    font-size:13px;
+}
+
+.note-footer strong{
+    font-size:15px;
+}
+
+.note-actions{
+    display:flex;
+    gap:10px;
+    max-width:760px;
+    margin:15px auto 30px;
+}
+
+.note-actions button{
+    flex:1;
+}
+
+/* CATALOGO */
+
+.catalog-list{
+    margin-top:15px;
+}
+
+.catalog-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#242424;
+    padding:10px;
+    border-radius:8px;
+    margin-top:6px;
+}
+
+.catalog-name{
+    flex:1;
+}
+
+.catalog-price{
+    margin:0 10px;
+    color:#ff6a00;
+    font-weight:bold;
+}
+
+/* MOVIL */
+
+@media(max-width:600px){
+
+    .container{
+        padding:12px;
+    }
+
+    .card{
+        padding:16px;
+    }
+
+    .logo{
+        font-size:28px;
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .item-grid{
+        grid-template-columns:1fr 70px 105px 42px;
+    }
+
+    .note{
+        padding:22px 16px;
+        border-radius:10px;
+    }
+
+    .note-logo{
+        font-size:27px;
+    }
+
+    .note-title{
+        align-items:start;
+        flex-direction:column;
+    }
+
+    .folio{
+        text-align:left;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-cell:nth-child(odd){
+        border-right:0;
+    }
+
+    .note-totals{
+        width:100%;
+    }
+
+    .note-actions{
+        flex-direction:column;
+        padding:0 12px;
+    }
+}
+
+/* IMPRESIÓN */
+
+@media print{
+
+    @page{
+        size:A4;
+        margin:12mm;
+    }
+
+    body{
+        background:#fff;
+    }
+
+    header,
+    .container,
+    .note-actions{
+        display:none !important;
+    }
+
+    #resultado{
+        display:block !important;
+    }
+
+    .note-wrapper{
+        margin:0;
+    }
+
+    .note{
+        display:block !important;
+        max-width:none;
+        width:100%;
+        margin:0;
+        padding:0;
+        box-shadow:none;
+        border-radius:0;
+    }
+
+    .note-table th{
+        background:#151515 !important;
+        color:#fff !important;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+    }
+
+    .guarantee{
+        background:#f3f3f3 !important;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+    }
 }
 </style>
 </head>
@@ -164,233 +541,1209 @@ th,td{
 <body>
 
 <header>
-  <div class="logo">MONTOYA <span>SERVICE</span></div>
-  <div class="slogan">Tu equipo en buenas manos.</div>
+
+    <div class="logo">
+        MONTOYA <span>SERVICE</span>
+    </div>
+
+    <div class="slogan">
+        Tu equipo en buenas manos.
+    </div>
+
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>🧾 Nueva nota de servicio</h2>
 
-<label>Cliente</label>
-<input id="cliente" placeholder="Nombre del cliente">
+    <h2 class="section-title">
+        🧾 Nueva nota de servicio
+    </h2>
 
-<label>Teléfono</label>
-<input id="telefono" type="tel" placeholder="Teléfono">
+    <div class="grid-2">
 
-<label>Tipo de equipo</label>
-<select id="equipo">
-<option>Motosierra</option>
-<option>Desbrozadora</option>
-<option>Generador</option>
-<option>Motobomba</option>
-<option>Otro</option>
-</select>
+        <div>
+            <label>Cliente</label>
+            <input id="cliente" placeholder="Nombre del cliente">
+        </div>
 
-<label>Marca</label>
-<input id="marca" placeholder="Ej. Husqvarna">
+        <div>
+            <label>Teléfono</label>
+            <input id="telefono" type="tel" placeholder="Número de teléfono">
+        </div>
 
-<label>Modelo</label>
-<input id="modelo" placeholder="Ej. 365">
+    </div>
 
-<label>Número de serie</label>
-<input id="serie" placeholder="Número de serie">
+    <div class="grid-2">
 
-<label>Trabajo realizado</label>
-<textarea id="trabajo" placeholder="Describe el trabajo realizado..."></textarea>
+        <div>
+            <label>Tipo de equipo</label>
 
-<h2>📦 Servicios / refacciones</h2>
+            <select id="equipo">
+                <option>Motosierra</option>
+                <option>Desbrozadora</option>
+                <option>Generador</option>
+                <option>Motobomba</option>
+                <option>Motor</option>
+                <option>Otro</option>
+            </select>
 
-<div id="items">
+        </div>
 
-<div class="item">
-<input placeholder="Concepto">
-<input type="number" placeholder="Precio" class="precio">
+        <div>
+            <label>Marca</label>
+            <input id="marca" placeholder="Ej. Husqvarna">
+        </div>
+
+    </div>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Modelo</label>
+            <input id="modelo" placeholder="Ej. 365">
+        </div>
+
+        <div>
+            <label>Número de serie</label>
+            <input id="serie" placeholder="Número de serie">
+        </div>
+
+    </div>
+
+    <label>Trabajo realizado</label>
+
+    <textarea
+        id="trabajo"
+        placeholder="Describe el trabajo realizado..."
+    ></textarea>
+
+
+    <h2 class="section-title" style="margin-top:30px;">
+        📦 Servicios / refacciones
+    </h2>
+
+    <div id="items"></div>
+
+    <button
+        class="secondary"
+        onclick="agregarItem()"
+    >
+        ➕ Agregar concepto
+    </button>
+
+
+    <!-- DESCUENTO POR PORCENTAJE -->
+
+    <label>Descuento</label>
+
+    <select id="descuentoPorcentaje">
+
+        <option value="0">Sin descuento</option>
+        <option value="5">5%</option>
+        <option value="10">10%</option>
+        <option value="15">15%</option>
+        <option value="20">20%</option>
+        <option value="25">25%</option>
+        <option value="30">30%</option>
+        <option value="35">35%</option>
+        <option value="40">40%</option>
+        <option value="50">50%</option>
+
+    </select>
+
+
+    <label>Estado del pago</label>
+
+    <select id="estado">
+
+        <option>Pagado</option>
+        <option>Pendiente</option>
+
+    </select>
+
+
+    <div class="summary">
+
+        <div class="summary-row">
+
+            <span>Subtotal</span>
+
+            <strong>
+                $<span id="subtotal">0.00</span>
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Descuento
+                (<span id="porcentajeMostrar">0</span>%)
+            </span>
+
+            <strong>
+                -$<span id="descuentoMonto">0.00</span>
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row total">
+
+            <span>TOTAL</span>
+
+            <span>
+                $<span id="total">0.00</span>
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary"
+        onclick="generarNota()"
+    >
+        GENERAR NOTA
+    </button>
+
 </div>
 
+
+<!-- CATALOGO -->
+
+<div class="card">
+
+    <h2 class="section-title">
+        ⚙️ Catálogo editable
+    </h2>
+
+    <p style="color:#bbb;font-size:14px;">
+        Guarda tus servicios y refacciones frecuentes para
+        tenerlos disponibles cuando hagas una nota.
+    </p>
+
+    <div class="grid-2">
+
+        <input
+            id="catalogoNombre"
+            placeholder="Ej. Bujía"
+        >
+
+        <input
+            id="catalogoPrecio"
+            type="number"
+            placeholder="Precio"
+            step="0.01"
+        >
+
+    </div>
+
+    <button
+        class="secondary"
+        onclick="guardarCatalogo()"
+    >
+        ➕ Guardar en catálogo
+    </button>
+
+    <div
+        id="catalogoLista"
+        class="catalog-list"
+    ></div>
+
 </div>
 
-<button class="secondary" onclick="agregarItem()">
-➕ Agregar concepto
-</button>
-
-<div class="total">
-Total: $<span id="total">0.00</span> MXN
-</div>
-
-<button class="primary" onclick="generarNota()">
-GENERAR NOTA
-</button>
-
-</div>
 
 <div id="resultado"></div>
 
 </div>
 
+
 <script>
 
-let folio = Number(localStorage.getItem("folioMontoya") || 0);
+/* =========================
+   FOLIO
+========================= */
 
-function agregarItem(){
-  const div=document.createElement("div");
-  div.className="item";
-  div.innerHTML=`
-    <input placeholder="Concepto">
-    <input type="number" placeholder="Precio" class="precio">
-  `;
-  document.getElementById("items").appendChild(div);
-  calcularTotal();
+let folio = Number(
+    localStorage.getItem("folioMontoya") || 0
+);
+
+
+/* =========================
+   CATALOGO
+========================= */
+
+let catalogo = JSON.parse(
+    localStorage.getItem("catalogoMontoya") || "[]"
+);
+
+
+/* =========================
+   INICIAR
+========================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    agregarItem();
+
+    mostrarCatalogo();
+
+    calcularTotal();
+
+});
+
+
+/* =========================
+   ESCAPAR TEXTO
+========================= */
+
+function escapar(texto){
+
+    return String(texto || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
 }
 
-document.addEventListener("input",function(e){
-  if(e.target.classList.contains("precio")){
+
+/* =========================
+   AGREGAR CONCEPTO
+========================= */
+
+function agregarItem(
+    concepto="",
+    cantidad=1,
+    precio=""
+){
+
+    const contenedor =
+        document.getElementById("items");
+
+    const div =
+        document.createElement("div");
+
+    div.className="item";
+
+    div.innerHTML=`
+
+        <div class="item-grid">
+
+            <input
+                class="concepto"
+                list="catalogoOpciones"
+                placeholder="Concepto"
+                value="${escapar(concepto)}"
+            >
+
+            <input
+                class="cantidad"
+                type="number"
+                min="1"
+                step="1"
+                value="${cantidad}"
+            >
+
+            <input
+                class="precio"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Precio"
+                value="${precio}"
+            >
+
+            <button
+                class="btn-delete"
+                onclick="eliminarItem(this)"
+                title="Eliminar"
+            >
+                ✕
+            </button>
+
+        </div>
+    `;
+
+    contenedor.appendChild(div);
+
     calcularTotal();
-  }
-});
+
+}
+
+
+/* =========================
+   ELIMINAR CONCEPTO
+========================= */
+
+function eliminarItem(boton){
+
+    const item =
+        boton.closest(".item");
+
+    if(item){
+        item.remove();
+    }
+
+    if(
+        document.querySelectorAll("#items .item").length === 0
+    ){
+        agregarItem();
+    }
+
+    calcularTotal();
+
+}
+
+
+/* =========================
+   CALCULAR TOTAL
+========================= */
 
 function calcularTotal(){
 
-  let total=0;
+    let subtotal=0;
 
-  document.querySelectorAll(".precio").forEach(input=>{
-    total += Number(input.value)||0;
-  });
+    document
+        .querySelectorAll("#items .item")
+        .forEach(item=>{
 
-  document.getElementById("total").textContent=total.toFixed(2);
+            const cantidad =
+                Number(
+                    item.querySelector(".cantidad")?.value
+                ) || 0;
+
+            const precio =
+                Number(
+                    item.querySelector(".precio")?.value
+                ) || 0;
+
+            subtotal += cantidad * precio;
+
+        });
+
+
+    const porcentaje =
+        Number(
+            document.getElementById("descuentoPorcentaje")?.value
+        ) || 0;
+
+
+    const descuento =
+        subtotal * (porcentaje / 100);
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - descuento
+        );
+
+
+    document.getElementById("subtotal").textContent =
+        subtotal.toFixed(2);
+
+
+    document.getElementById("porcentajeMostrar").textContent =
+        porcentaje;
+
+
+    document.getElementById("descuentoMonto").textContent =
+        descuento.toFixed(2);
+
+
+    document.getElementById("total").textContent =
+        total.toFixed(2);
+
 }
+
+
+/* =========================
+   ACTUALIZAR TOTALES
+========================= */
+
+document.addEventListener("input",function(e){
+
+    if(
+        e.target.classList.contains("precio") ||
+        e.target.classList.contains("cantidad")
+    ){
+        calcularTotal();
+    }
+
+});
+
+
+document.addEventListener("change",function(e){
+
+    if(
+        e.target.id === "descuentoPorcentaje"
+    ){
+        calcularTotal();
+    }
+
+});
+
+
+/* =========================
+   GUARDAR CATALOGO
+========================= */
+
+function guardarCatalogo(){
+
+    const nombre =
+        document
+            .getElementById("catalogoNombre")
+            .value
+            .trim();
+
+
+    const precio =
+        Number(
+            document.getElementById("catalogoPrecio").value
+        ) || 0;
+
+
+    if(!nombre){
+
+        alert(
+            "Escribe el nombre del producto o servicio."
+        );
+
+        return;
+    }
+
+
+    catalogo.push({
+
+        nombre:nombre,
+        precio:precio
+
+    });
+
+
+    localStorage.setItem(
+        "catalogoMontoya",
+        JSON.stringify(catalogo)
+    );
+
+
+    document.getElementById(
+        "catalogoNombre"
+    ).value="";
+
+
+    document.getElementById(
+        "catalogoPrecio"
+    ).value="";
+
+
+    mostrarCatalogo();
+
+}
+
+
+/* =========================
+   MOSTRAR CATALOGO
+========================= */
+
+function mostrarCatalogo(){
+
+    const lista =
+        document.getElementById("catalogoLista");
+
+    lista.innerHTML="";
+
+
+    catalogo.forEach((producto,index)=>{
+
+        const fila =
+            document.createElement("div");
+
+        fila.className="catalog-row";
+
+        fila.innerHTML=`
+
+            <div class="catalog-name">
+                ${escapar(producto.nombre)}
+            </div>
+
+            <div class="catalog-price">
+                $${Number(producto.precio).toFixed(2)}
+            </div>
+
+            <button
+                class="btn-delete"
+                onclick="eliminarCatalogo(${index})"
+            >
+                ✕
+            </button>
+
+        `;
+
+        lista.appendChild(fila);
+
+    });
+
+
+    actualizarDatalist();
+
+}
+
+
+/* =========================
+   ELIMINAR CATALOGO
+========================= */
+
+function eliminarCatalogo(index){
+
+    catalogo.splice(index,1);
+
+    localStorage.setItem(
+        "catalogoMontoya",
+        JSON.stringify(catalogo)
+    );
+
+    mostrarCatalogo();
+
+}
+
+
+/* =========================
+   DATALIST
+========================= */
+
+function actualizarDatalist(){
+
+    let datalist =
+        document.getElementById("catalogoOpciones");
+
+
+    if(!datalist){
+
+        datalist =
+            document.createElement("datalist");
+
+        datalist.id="catalogoOpciones";
+
+        document.body.appendChild(datalist);
+
+    }
+
+
+    datalist.innerHTML="";
+
+
+    catalogo.forEach(producto=>{
+
+        const option =
+            document.createElement("option");
+
+        option.value=producto.nombre;
+
+        datalist.appendChild(option);
+
+    });
+
+}
+
+
+/* =========================
+   GENERAR NOTA
+========================= */
 
 function generarNota(){
 
-  const cliente=document.getElementById("cliente").value;
-  const telefono=document.getElementById("telefono").value;
-  const equipo=document.getElementById("equipo").value;
-  const marca=document.getElementById("marca").value;
-  const modelo=document.getElementById("modelo").value;
-  const serie=document.getElementById("serie").value;
-  const trabajo=document.getElementById("trabajo").value;
+    const cliente =
+        document.getElementById("cliente").value.trim();
 
-  if(!cliente){
-    alert("Escribe el nombre del cliente.");
-    return;
-  }
+    const telefono =
+        document.getElementById("telefono").value.trim();
 
-  folio++;
-  localStorage.setItem("folioMontoya",folio);
+    const equipo =
+        document.getElementById("equipo").value;
 
-  const numero="MS-"+String(folio).padStart(6,"0");
+    const marca =
+        document.getElementById("marca").value.trim();
 
-  let filas="";
-  let total=0;
+    const modelo =
+        document.getElementById("modelo").value.trim();
 
-  document.querySelectorAll("#items .item").forEach(item=>{
+    const serie =
+        document.getElementById("serie").value.trim();
 
-    const inputs=item.querySelectorAll("input");
+    const trabajo =
+        document.getElementById("trabajo").value.trim();
 
-    const concepto=inputs[0].value;
-    const precio=Number(inputs[1].value)||0;
+    const estado =
+        document.getElementById("estado").value;
 
-    if(concepto){
-      filas+=`
-      <tr>
-        <td>${concepto}</td>
-        <td>$${precio.toFixed(2)}</td>
-      </tr>`;
-      total+=precio;
+
+    if(!cliente){
+
+        alert(
+            "Escribe el nombre del cliente."
+        );
+
+        return;
     }
 
-  });
 
-  const fecha=new Date().toLocaleDateString("es-MX");
+    folio++;
 
-  document.getElementById("resultado").innerHTML=`
 
-  <div class="note" id="nota">
+    localStorage.setItem(
+        "folioMontoya",
+        folio
+    );
 
-    <div class="note-header">
-      <h1>MONTOYA SERVICE</h1>
-      <b>Tu equipo en buenas manos.</b>
-      <p>📞 317 101 4207</p>
-      <p>📍 San Juan Xoconusco</p>
-    </div>
 
-    <h2 style="color:#111">NOTA DE SERVICIO</h2>
+    const numero =
+        "MS-" +
+        String(folio).padStart(6,"0");
 
-    <div class="note-row">
-      <b>Folio:</b> ${numero}
-    </div>
 
-    <div class="note-row">
-      <b>Fecha:</b> ${fecha}
-    </div>
+    const fecha =
+        new Date().toLocaleDateString(
+            "es-MX",
+            {
+                day:"2-digit",
+                month:"2-digit",
+                year:"numeric"
+            }
+        );
 
-    <hr>
 
-    <div class="note-row">
-      <b>Cliente:</b> ${cliente}
-    </div>
+    let filas="";
 
-    <div class="note-row">
-      <b>Teléfono:</b> ${telefono}
-    </div>
+    let subtotal=0;
 
-    <hr>
 
-    <div class="note-row">
-      <b>Equipo:</b> ${equipo}
-    </div>
+    document
+        .querySelectorAll("#items .item")
+        .forEach(item=>{
 
-    <div class="note-row">
-      <b>Marca:</b> ${marca}
-    </div>
+            const concepto =
+                item
+                    .querySelector(".concepto")
+                    .value
+                    .trim();
 
-    <div class="note-row">
-      <b>Modelo:</b> ${modelo}
-    </div>
 
-    <div class="note-row">
-      <b>Número de serie:</b> ${serie}
-    </div>
+            const cantidad =
+                Number(
+                    item
+                        .querySelector(".cantidad")
+                        .value
+                ) || 0;
 
-    <hr>
 
-    <b>TRABAJO REALIZADO</b>
-    <p>${trabajo || "No especificado"}</p>
+            const precio =
+                Number(
+                    item
+                        .querySelector(".precio")
+                        .value
+                ) || 0;
 
-    <table>
-      <tr>
-        <th>Concepto</th>
-        <th>Importe</th>
-      </tr>
 
-      ${filas}
+            if(concepto && cantidad > 0){
 
-    </table>
+                const importe =
+                    cantidad * precio;
 
-    <div class="note-total">
-      TOTAL: $${total.toFixed(2)} MXN
-    </div>
 
-    <div class="guarantee">
-      <b>GARANTÍA</b><br>
-      20 días posteriores a la reparación,
-      únicamente sobre las refacciones instaladas,
-      bajo las condiciones de garantía de Montoya Service.
-    </div>
+                subtotal += importe;
 
-    <p style="text-align:center;margin-top:25px">
-      <b>Gracias por confiar en Montoya Service.</b>
-    </p>
 
-  </div>
+                filas += `
 
-  `;
+                    <tr>
 
-  window.scrollTo({
-    top:document.body.scrollHeight,
-    behavior:"smooth"
-  });
+                        <td>
+                            ${escapar(concepto)}
+                        </td>
+
+                        <td class="center">
+                            ${cantidad}
+                        </td>
+
+                        <td class="right">
+                            $${precio.toFixed(2)}
+                        </td>
+
+                        <td class="right">
+                            $${importe.toFixed(2)}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+        });
+
+
+    const porcentaje =
+        Number(
+            document
+                .getElementById("descuentoPorcentaje")
+                .value
+        ) || 0;
+
+
+    const descuento =
+        subtotal * (porcentaje / 100);
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - descuento
+        );
+
+
+    if(!filas){
+
+        filas=`
+
+            <tr>
+
+                <td colspan="4">
+                    Sin conceptos registrados
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+
+    const estadoTexto =
+        estado === "Pagado"
+        ? "PAGADO"
+        : "PENDIENTE";
+
+
+    document.getElementById("resultado").innerHTML=`
+
+        <div class="note-wrapper">
+
+            <div class="note" id="nota">
+
+
+                <div class="note-brand">
+
+                    <div class="note-logo">
+                        MONTOYA <span>SERVICE</span>
+                    </div>
+
+                    <div class="note-slogan">
+                        Tu equipo en buenas manos.
+                    </div>
+
+                    <div class="note-contact">
+
+                        <span>
+                            📞 317 101 4207
+                        </span>
+
+                        <span>
+                            📍 San Juan Xoconusco
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="note-title">
+
+                    <div>
+
+                        <h1>
+                            NOTA DE SERVICIO
+                        </h1>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        Folio<br>
+
+                        <strong>
+                            ${numero}
+                        </strong>
+
+                        <br>
+
+                        Fecha:
+                        ${fecha}
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-section-title">
+                        Datos del cliente
+                    </div>
+
+
+                    <div class="info-grid">
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Cliente
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(cliente)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Teléfono
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(
+                                    telefono ||
+                                    "No registrado"
+                                )}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-section-title">
+                        Datos del equipo
+                    </div>
+
+
+                    <div class="info-grid">
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Equipo
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(equipo)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Marca
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(
+                                    marca ||
+                                    "No especificada"
+                                )}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Modelo
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(
+                                    modelo ||
+                                    "No especificado"
+                                )}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-cell">
+
+                            <span class="info-label">
+                                Número de serie
+                            </span>
+
+                            <span class="info-value">
+                                ${escapar(
+                                    serie ||
+                                    "No registrado"
+                                )}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="work-section">
+
+                    <div class="work-title">
+                        TRABAJO REALIZADO
+                    </div>
+
+                    <div class="work-text">
+
+                        ${escapar(
+                            trabajo ||
+                            "No especificado"
+                        ).replace(/\n/g,"<br>")}
+
+                    </div>
+
+                </div>
+
+
+                <table class="note-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Concepto
+                            </th>
+
+                            <th class="center">
+                                Cant.
+                            </th>
+
+                            <th class="right">
+                                Precio
+                            </th>
+
+                            <th class="right">
+                                Importe
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        ${filas}
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="note-totals">
+
+                    <div class="note-total-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            $${subtotal.toFixed(2)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="note-total-row">
+
+                        <span>
+                            Descuento (${porcentaje}%)
+                        </span>
+
+                        <strong>
+                            -$${descuento.toFixed(2)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="note-grand-total">
+
+                        <div class="note-total-row">
+
+                            <span>
+                                TOTAL
+                            </span>
+
+                            <span>
+                                $${total.toFixed(2)}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="status">
+
+                        Estado:
+                        ${estadoTexto}
+
+                    </span>
+
+                </div>
+
+
+                <div class="guarantee">
+
+                    <div class="guarantee-title">
+                        GARANTÍA
+                    </div>
+
+                    20 días posteriores a la reparación,
+                    únicamente sobre las refacciones instaladas,
+                    bajo las condiciones de garantía de
+                    Montoya Service.
+
+                </div>
+
+
+                <div class="note-footer">
+
+                    <strong>
+                        Gracias por confiar en Montoya Service.
+                    </strong>
+
+                    <br><br>
+
+                    Tu equipo en buenas manos.
+
+                </div>
+
+            </div>
+
+
+            <div class="note-actions">
+
+                <button
+                    class="primary"
+                    onclick="imprimirNota()"
+                >
+                    🖨️ IMPRIMIR / PDF
+                </button>
+
+
+                <button
+                    class="secondary"
+                    onclick="nuevaNota()"
+                >
+                    ➕ NUEVA NOTA
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    window.scrollTo({
+
+        top:
+            document
+                .getElementById("resultado")
+                .offsetTop - 15,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =========================
+   IMPRIMIR
+========================= */
+
+function imprimirNota(){
+
+    window.print();
+
+}
+
+
+/* =========================
+   NUEVA NOTA
+========================= */
+
+function nuevaNota(){
+
+    document.getElementById("cliente").value="";
+    document.getElementById("telefono").value="";
+    document.getElementById("marca").value="";
+    document.getElementById("modelo").value="";
+    document.getElementById("serie").value="";
+    document.getElementById("trabajo").value="";
+
+    document.getElementById(
+        "descuentoPorcentaje"
+    ).value="0";
+
+    document.getElementById(
+        "estado"
+    ).value="Pagado";
+
+
+    document.getElementById(
+        "items"
+    ).innerHTML="";
+
+
+    agregarItem();
+
+
+    document.getElementById(
+        "resultado"
+    ).innerHTML="";
+
+
+    calcularTotal();
+
+
+    window.scrollTo({
+
+        top:0,
+        behavior:"smooth"
+
+    });
+
 }
 
 </script>
