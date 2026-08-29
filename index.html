@@ -543,13 +543,80 @@ button:active{
         width:100% !important;
         max-width:none !important;
         margin:0 !important;
-        padding:8mm !important;
+        padding:4.5mm !important;
         background:#fff !important;
         color:#111 !important;
         box-shadow:none !important;
         border-radius:0 !important;
         page-break-inside:avoid;
+        font-size:11px !important;
+        line-height:1.2 !important;
     }
+
+    /* Compactar la nota para que quepa completa en una sola hoja A4 */
+    .note-brand{
+        border-bottom:2px solid #ff6a00 !important;
+        padding-bottom:7px !important;
+        margin-bottom:10px !important;
+    }
+    .brand-row{gap:9px !important}
+    .brand-mark{
+        width:42px !important;
+        height:42px !important;
+        border-width:3px !important;
+        font-size:15px !important;
+    }
+    .note-logo{font-size:24px !important;letter-spacing:.5px !important}
+    .note-slogan{font-size:11px !important;margin-top:2px !important}
+    .note-contact{
+        margin-top:8px !important;
+        font-size:10px !important;
+        gap:6px !important;
+    }
+    .note-title{
+        margin-bottom:10px !important;
+        gap:8px !important;
+    }
+    .note-title h1{font-size:23px !important}
+    .folio{font-size:10px !important}
+    .folio strong{font-size:14px !important}
+    .info-box{margin-bottom:10px !important}
+    .info-section-title{padding:6px 9px !important;font-size:11px !important}
+    .info-cell{padding:5px 9px !important}
+    .info-label{font-size:8px !important;margin-bottom:1px !important}
+    .info-value{font-size:10px !important}
+    .work-section{margin:10px 0 !important}
+    .work-title{font-size:11px !important;padding-bottom:4px !important;margin-bottom:5px !important}
+    .work-text{font-size:10px !important;line-height:1.25 !important}
+    .note-table{margin-top:9px !important}
+    .note-table th{padding:6px 5px !important;font-size:10px !important}
+    .note-table td{padding:6px 5px !important;font-size:10px !important}
+    .note-totals{width:230px !important;margin-top:9px !important}
+    .note-total-row{padding:3px 0 !important;font-size:10px !important}
+    .note-grand-total{
+        border-top-width:2px !important;
+        margin-top:4px !important;
+        padding-top:5px !important;
+        font-size:16px !important;
+    }
+    .status{margin-top:7px !important;padding:5px 9px !important;font-size:10px !important}
+    .guarantee{
+        margin-top:10px !important;
+        padding:8px !important;
+        font-size:9px !important;
+        line-height:1.3 !important;
+    }
+    .guarantee-title{font-size:10px !important;margin-bottom:2px !important}
+    .note-footer{
+        margin-top:12px !important;
+        padding-top:8px !important;
+        font-size:9px !important;
+    }
+    .note-footer strong{font-size:10px !important}
+    .note-footer br{line-height:0 !important}
+
+    /* Evitar que una fila de la tabla se parta entre páginas */
+    .note-table thead{display:table-header-group;}
 
     .note-table{
         page-break-inside:auto;
